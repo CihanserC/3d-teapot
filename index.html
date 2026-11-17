@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b0a08" />
+    <meta
+      name="description"
+      content="Aurelia — ultra gerçekçi 3D porselen çaydanlık atölyesi. Porselen rengini, yüzey dokusunu, ışığı ve görüntü filtrelerini gerçek zamanlı değiştirin."
+    />
+    <title>Aurelia — 3D Porselen Atölyesi</title>
+    <link rel="stylesheet" href="./dist/app.css" />
+    <script defer src="./dist/app.js"></script>
+  </head>
+  <body data-mobile-tab="material">
+    <div id="app">
+      <div id="stage" class="stage">
+        <noscript>
+          <div class="no-script">Bu atölyeyi görmek için JavaScript'i etkinleştirin.</div>
+        </noscript>
+      </div>
+
+      <div class="edge-shade edge-shade--top" aria-hidden="true"></div>
+      <div class="edge-shade edge-shade--bottom" aria-hidden="true"></div>
+      <div class="scene-glow" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <div class="brand" aria-label="Aurelia Porselen Atölyesi">
+          <div class="brand-seal" aria-hidden="true"><span>A</span></div>
+          <div class="brand-copy">
+            <span class="brand-name">AURELIA</span>
+            <span class="brand-line">PORCELAIN ATELIER</span>
+          </div>
+        </div>
+
+        <div class="filter-pill" id="filterPill" aria-live="polite">
+          <span class="filter-pill-label">GÖRÜNTÜ</span>
+          <span class="filter-pill-name" id="filterPillName">Doğal</span>
+          <span class="filter-pill-code" id="filterPillCode">01</span>
+        </div>
+
+        <div class="top-actions">
+          <div class="live-badge"><span class="live-dot"></span><span>CANLI 3D</span></div>
+          <button
+            class="icon-button"
+            id="screenshotButton"
+            type="button"
+            title="Kareyi PNG olarak indir"
+            aria-label="Kareyi PNG olarak indir"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.6 8.2h2.9l1.2-1.9h6.6l1.2 1.9h2.9a1.7 1.7 0 0 1 1.7 1.7v8a1.7 1.7 0 0 1-1.7 1.7H4.6a1.7 1.7 0 0 1-1.7-1.7v-8a1.7 1.7 0 0 1 1.7-1.7Z" />
+              <circle cx="12" cy="13.5" r="3.6" />
+            </svg>
+          </button>
+          <button
+            class="icon-button"
+            id="resetButton"
+            type="button"
+            title="Sahneyi başlangıç ayarlarına döndür"
+            aria-label="Sahneyi başlangıç ayarlarına döndür"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.9 9.1A7.4 7.4 0 1 1 4.7 15" />
+              <path d="M4.4 4.9v4.7h4.7" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="ui">
+        <aside class="panel panel--material" id="materialPanel" aria-label="Porselen rengi ve yüzey">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">01 / MATERYAL</p>
+              <h2 class="panel-title"><span>Porselen</span> <span>rengi</span></h2>
+            </div>
+            <div class="active-swatch" id="activeSwatch" aria-hidden="true"></div>
+          </div>
+
+          <div class="color-readout">
+            <span class="color-name" id="colorName">Fildişi</span>
+            <span class="color-hex" id="colorHex">#E8DCC8</span>
+          </div>
+
+          <div class="swatch-grid" id="swatchGrid" role="group" aria-label="Porselen renkleri"></div>
+
+          <label class="custom-row" id="customRow">
+            <span class="custom-swatch" aria-hidden="true"><span>+</span></span>
+            <span class="custom-label">Özel renk seç</span>
+            <span class="custom-hint">CMYK değil, hayal et</span>
+            <input
+              id="customColor"
+              type="color"
+              value="#E8DCC8"
+              aria-label="Özel porselen rengi seç"
+            />
+          </label>
+
+          <div class="divider"></div>
+
+          <div class="section-head">
+            <span class="eyebrow">YÜZEY</span>
+            <span class="section-count" id="finishNote">İpek Porselen</span>
+          </div>
+          <div class="finish-grid" id="finishGrid" role="group" aria-label="Yüzey dokusu"></div>
+
+          <div class="handmade-note">
+            <span class="handmade-mark" aria-hidden="true"></span>
+            <p><span>El işçiliği</span><em>24 ayar altın detay</em></p>
+          </div>
+        </aside>
+
+        <aside class="panel panel--scene" id="scenePanel" aria-label="Işık, filtre ve kamera">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">02 / SAHNE</p>
+              <h2 class="panel-title"><span>Işık &amp;</span> <span>görüntü</span></h2>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <span class="eyebrow">ATMOSFER</span>
+            <span class="section-count" id="moodNote">Sıcak stüdyo ışığı</span>
+          </div>
+          <div class="mood-grid" id="moodGrid" role="group" aria-label="Sahne atmosferi"></div>
+
+          <div class="divider"></div>
+
+          <div class="section-head">
+            <span class="eyebrow">GÖRÜNTÜ FİLTRESİ</span>
+            <span class="section-count" id="filterCounter">01 / 08</span>
+          </div>
+          <div class="filter-grid" id="filterGrid" role="group" aria-label="Görüntü filtreleri"></div>
+
+          <div class="divider"></div>
+
+          <div class="view-row">
+            <span class="eyebrow">KAMERA</span>
+            <div class="camera-buttons" id="cameraButtons" role="group" aria-label="Kamera açıları"></div>
+          </div>
+
+          <div class="auto-row">
+            <div>
+              <span class="auto-title">Otomatik döndür</span>
+              <span class="auto-sub">Yavaş sinematik tur</span>
+            </div>
+            <button
+              class="switch is-on"
+              id="autoRotateButton"
+              type="button"
+              role="switch"
+              aria-checked="true"
+              aria-label="Otomatik döndürmeyi aç veya kapat"
+            >
+              <span></span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="specimen" aria-hidden="true">
+          <span class="specimen-label">N° 001 — AURELIA</span>
+          <p>El yapımı porselen<br /><em>Işıkla şekillenen form</em></p>
+        </div>
+
+        <div class="hint" id="hint">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="7.2" y="2.8" width="9.6" height="16.4" rx="4.8" />
+            <path d="M12 6.6v3.1" />
+          </svg>
+          <span>Sürükleyerek döndür</span>
+          <i></i>
+          <span>Kaydır &amp; yakınlaş</span>
+        </div>
+      </main>
+
+      <nav class="mobile-tabs" aria-label="Kontrol panelleri">
+        <button type="button" class="is-active" data-tab="material" aria-selected="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.2" /><path d="M12 4.8v14.4" /></svg>
+          <span>Materyal</span>
+        </button>
+        <button type="button" data-tab="scene" aria-selected="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2" /><path d="M12 3.4v2.1M12 18.5v2.1M3.4 12h2.1M18.5 12h2.1M5.9 5.9l1.5 1.5M16.6 16.6l1.5 1.5M18.1 5.9l-1.5 1.5M7.4 16.6l-1.5 1.5" /></svg>
+          <span>Işık &amp; Görüntü</span>
+        </button>
+      </nav>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="capture-flash" id="captureFlash" aria-hidden="true"></div>
+
+      <div class="boot" id="boot">
+        <div class="boot-center">
+          <div class="boot-seal" aria-hidden="true">A</div>
+          <p class="boot-brand">AURELIA</p>
+          <p class="boot-sub">PORCELAIN ATELIER</p>
+          <div class="boot-progress" aria-hidden="true"><span></span></div>
+          <p class="boot-status" id="bootStatus">Atölye hazırlanıyor</p>
+        </div>
+        <div class="boot-corner boot-corner--tl"></div>
+        <div class="boot-corner boot-corner--tr"></div>
+        <div class="boot-corner boot-corner--bl"></div>
+        <div class="boot-corner boot-corner--br"></div>
+      </div>
+    </div>
+  </body>
+</html>
