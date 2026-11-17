@@ -1,68 +1,68 @@
-# Aurelia — 3D Porselen Atölyesi
+# Aurelia — 3D Porcelain Atelier
 
-**Canlı demo:** https://cihanserc.github.io/3d-teapot/
+**Live demo:** https://cihanserc.github.io/3d-teapot/
 
-Tarayıcıda çalışan, **ultra gerçekçi ve etkileşimli bir çaydanlık (teapot) simülatörü**.
-WebGL + Three.js ile gerçek zamanlı **PBR (fiziksel tabanlı) ışıklandırma**,
-yumuşak stüdyo gölgeleri, HDR benzeri ortam yansımaları ve sinematik
-post-processing içerir.
+An **ultra-realistic, interactive 3D teapot simulator** that runs in the browser.
+Built with WebGL + Three.js, it features real-time **PBR (physically based rendering)
+lighting**, soft studio shadows, HDR-style environment reflections and cinematic
+post-processing.
 
-![Masaüstü önizleme](preview-desktop.png)
+![Desktop preview](preview-desktop.png)
 
-## Çalıştırma
+## Running
 
-- **Online:** Yukarıdaki canlı demo bağlantısını açın.
-- **Yerel:** Repoyu indirip `index.html` dosyasını tarayıcıda açın (çift tıklamak yeterli).
-  İnternet gerekmez; Three.js, yazı tipleri ve dokular `dist/` içinde pakete gömülüdür.
+- **Online:** Open the live demo link above.
+- **Locally:** Download the repo and open `index.html` in a browser (a double-click is enough).
+  No internet connection needed — Three.js, fonts and textures are bundled in `dist/`.
 
-## Özellikler
+## Features
 
-- **Porselen rengi** — 10 küratörlük ton + özel renk seçici
-- **Yüzey dokusu** — İpek Porselen, Mat Seramik, Sedef, Saten Metal
-- **Sahne atmosferi** — Atölye, Altın Saat, Gece Yarısı, Galeri
-- **Görüntü filtreleri** — Doğal, Sinematik, Altın Film, Buz, Noir, Vintage, Rüya, Canlı
-- **Kamera** — Ön, 3/4, Yakın, Tepe açıları ve otomatik sinematik dönüş
-- **PNG kare indirme** — sağ üstteki fotoğraf düğmesiyle sahneyi kaydedin
-- **Mobil uyumlu** arayüz
+- **Porcelain color** — 10 curated tones plus a custom color picker
+- **Surface finish** — Silk Porcelain, Matte Ceramic, Mother-of-Pearl, Satin Metal
+- **Scene mood** — Atelier, Golden Hour, Midnight, Gallery
+- **Image filters** — Natural, Cinematic, Golden Film, Ice, Noir, Vintage, Dream, Vivid
+- **Camera** — Front, 3/4, Close-up and Top views, plus an automatic cinematic orbit
+- **PNG snapshot** — save the scene with the camera button in the top-right corner
+- **Mobile-friendly** interface
 
-<img src="preview-mobile.png" alt="Mobil önizleme" width="300" />
+<img src="preview-mobile.png" alt="Mobile preview" width="300" />
 
-## Kontroller
+## Controls
 
-| Eylem | Giriş |
+| Action | Input |
 | --- | --- |
-| Döndür | Sürükle |
-| Yakınlaştır | Tekerlek / kaydırma |
-| Renk kısayolları | `1`–`9`, `0` |
-| Sıfırla | `R` |
-| Otomatik dönüş | `Boşluk` |
+| Rotate | Drag |
+| Zoom | Mouse wheel / scroll |
+| Color shortcuts | `1`–`9`, `0` |
+| Reset | `R` |
+| Auto-rotate | `Space` |
 
-## Proje yapısı
+## Project structure
 
 ```
-├── index.html          # uygulama kabuğu ve arayüz
+├── index.html          # app shell and UI
 ├── dist/
-│   ├── app.js          # paketlenmiş Three.js sahnesi ve mantık
-│   └── app.css         # stiller (yazı tipleri gömülü)
-├── src/                # kaynak modüller
-│   ├── main.js         # giriş noktası, arayüz ve sahne yönetimi
-│   ├── teapot.js       # çaydanlık modeli
-│   ├── environment.js  # stüdyo ortamı, ışıklar, zemin ve kaide
-│   ├── post.js         # post-processing ve filtreler
-│   ├── textures.js     # prosedürel dokular
-│   ├── config.js       # renk, doku, atmosfer ve kamera ön ayarları
+│   ├── app.js          # bundled Three.js scene and logic
+│   └── app.css         # styles (fonts embedded)
+├── src/                # source modules
+│   ├── main.js         # entry point, UI and scene management
+│   ├── teapot.js       # teapot model
+│   ├── environment.js  # studio environment, lights, floor and plinth
+│   ├── post.js         # post-processing and filters
+│   ├── textures.js     # procedural textures
+│   ├── config.js       # color, finish, mood and camera presets
 │   └── styles.css
-└── assets/fonts/       # yerel yazı tipleri
+└── assets/fonts/       # local fonts
 ```
 
-## Geliştirme
+## Development
 
 ```bash
 npm install
-npm run dev     # izleme modunda derleme
-npm run build   # dist/ klasörünü yeniden üretir
+npm run dev     # build in watch mode
+npm run build   # regenerate the dist/ folder
 ```
 
-## Teknolojiler
+## Built with
 
 [Three.js](https://threejs.org/) 0.187 · [esbuild](https://esbuild.github.io/)
